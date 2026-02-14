@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para `Vida mia ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #ffffff;
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Corazones flotando */
+.heart {
+    position: absolute;
+    color: rgba(214, 51, 108, 0.15);
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.card {
+    text-align: center;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    max-width: 450px;
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+h1 {
+    font-weight: 600;
+    color: #d6336c;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+}
+
+.buttons {
+    margin-top: 30px;
+    position: relative;
+    height: 60px;
+}
+
+button {
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yes {
+    background-color: #d6336c;
+    color: white;
+}
+
+#yes:hover {
+    transform: scale(1.1);
+}
+
+#no {
+    background-color: #f1f1f1;
+    color: #555;
+    position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Vida mía ❤️</h1>
+<img src="image.jpg" alt="Nosotros"
+style="width:180px; height:180px; object-fit:cover; border-radius:50%; margin-bottom:20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+
+    <p>Es difícil expresar en una frase lo que significas en mi vida. Pero quiero que sepas que cada reto/meta/alegría/tristeza que nos ponga la vida simplemente los quiero vivir a tu ladoooo.</p>
+    <p><strong>¿Aceptas ser mi San Valentín de aqui a que me arrugue mas?</strong></p>
+
+    <div class="buttons">
+        <button id="yes" onclick="aceptar()">Re Yes 💖</button>
+        <button id="no" onmouseover="moverBoton()">Pff No</button>
+    </div>
+</div>
+
+<audio id="musica" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* Corazones dinámicos */
+function crearCorazon() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(crearCorazon, 500);
+
+/* Botón que huye */
+function moverBoton() {
+    const boton = document.getElementById("no");
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 200 - 100;
+    boton.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+/* Cuando acepta */
+function aceptar() {
+    document.body.innerHTML = `
+    <div style="display:flex; justify-content:center; align-items:center; height:100vh; text-align:center; font-family: 'Playfair Display', serif;">
+        <h1 style="color:#d6336c; font-weight:600;">
+        Obvio yo sabia que sí 💘<br><br>
+        Y aunque estas lejos y el plan es aqui en Colombia, necesito un día tuyo para ir apenas puedas<br>
+        Te amo Dayra Alejandra!!
+        </h1>
+<img src="amor.gif"
+style="position:absolute; bottom:20px; right:20px; width:80px; opacity:0.7;">
+
+    </div>
+    `;
+}
+</script>
+
+</body>
+</html>
